@@ -1,0 +1,11 @@
+# Bağımlılıklar / geçici
+node_modules/
+.cache/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Editör
+.vscode/
+*.log
