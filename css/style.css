@@ -243,6 +243,24 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .product-body { padding: 24px 26px; }
 .product-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
 .product-body p { color: var(--text-dim); font-size: 0.97rem; }
+.product-list {
+  list-style: none;
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+.product-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+.product-list li::before {
+  content: "•";
+  position: absolute; left: 4px;
+  color: var(--olive);
+  font-weight: 700;
+}
 
 /* ===================== SPLIT (Fason) ===================== */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
