@@ -204,6 +204,25 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
 .card p { color: var(--text-dim); }
 
+/* Açılır detay (Detay için tıklayınız) */
+.card-details { margin-top: 14px; }
+.card-details summary {
+  cursor: pointer;
+  display: inline-block;
+  list-style: none;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 6px 0;
+  user-select: none;
+  transition: color .2s;
+}
+.card-details summary::-webkit-details-marker { display: none; }
+.card-details summary::after { content: " ▾"; font-size: 0.8em; }
+.card-details[open] summary::after { content: " ▴"; }
+.card-details summary:hover { color: var(--accent-2); }
+.card-details .product-list { margin-top: 10px; }
+
 /* Ürün kartları (görselli) */
 .product-card {
   background: var(--surface);
