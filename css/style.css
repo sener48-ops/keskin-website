@@ -260,6 +260,15 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .product-img.olive1 { background: linear-gradient(135deg, #5c7a2c, #34471a); }
 .product-img.olive2 { background: linear-gradient(135deg, #6b7a3e, #2f3b1c); }
 .product-img.olive3 { background: linear-gradient(135deg, #7a8a4e, #3b4326); }
+/* Gerçek fotoğraf: kutuyu kaplar, etiketin üzerini örter */
+.product-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+}
 
 .product-body { padding: 24px 26px; }
 .product-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
