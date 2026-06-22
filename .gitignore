@@ -9,3 +9,8 @@ Thumbs.db
 # Editör
 .vscode/
 *.log
+
+# Optimize edilmemiş orijinal görseller (sadece assets/images/web/ yayınlanır)
+/assets/images/*.jpg
+/assets/images/*.jpeg
+/assets/images/*.png

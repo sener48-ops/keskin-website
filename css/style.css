@@ -319,7 +319,91 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 22px),
                     repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 22px);
 }
-.split-visual::after { content: attr(data-label); position: relative; z-index: 1; }
+.split-visual::after { content: attr(data-label); position: relative; z-index: 3; }
+/* Fason görseli gerçek fotoğraf olunca */
+.split-visual.has-photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 1;
+}
+.split-visual.has-photo::before {
+  background: linear-gradient(0deg, rgba(8,17,29,0.92) 0%, rgba(8,17,29,0.35) 55%, rgba(8,17,29,0.55) 100%);
+  z-index: 2;
+}
+.split-visual.has-photo::after {
+  align-self: end;
+  padding-bottom: 22px;
+  font-size: 0.98rem;
+}
+
+/* ===================== GALERİ ===================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.gallery-item {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background: var(--surface);
+  aspect-ratio: 4 / 3;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s;
+}
+.gallery-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: rgba(255,122,24,0.5); }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ===================== LIGHTBOX ===================== */
+.lightbox {
+  position: fixed; inset: 0;
+  z-index: 2000;
+  background: rgba(5, 10, 18, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox.open { display: flex; }
+.lb-img {
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.lb-btn {
+  position: absolute;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: background .2s;
+}
+.lb-btn:hover { background: var(--accent); border-color: var(--accent); }
+.lb-close {
+  top: 20px; right: 22px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  font-size: 1.7rem; line-height: 1;
+}
+.lb-prev, .lb-next {
+  top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  font-size: 2rem; line-height: 1;
+}
+.lb-prev { left: 22px; }
+.lb-next { right: 22px; }
 
 /* ===================== ZEYTİN BÖLÜMÜ ===================== */
 .section-olive {
@@ -494,6 +578,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   .footer-brand { grid-column: 1 / -1; }
   .booking-wrap { grid-template-columns: 1fr; }
   .form-row.three { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -523,6 +608,9 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 
 @media (max-width: 480px) {
   .cols-3, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .lb-prev, .lb-next { width: 42px; height: 42px; font-size: 1.6rem; }
+  .lb-prev { left: 10px; } .lb-next { right: 10px; }
   .hero { min-height: 86vh; }
   .hero-actions { flex-direction: column; }
   .btn { text-align: center; }

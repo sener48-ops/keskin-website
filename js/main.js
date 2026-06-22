@@ -112,6 +112,50 @@
     });
   }
 
+  /* ---- Galeri lightbox ---- */
+  var galleryGrid = document.getElementById("galleryGrid");
+  var lightbox = document.getElementById("lightbox");
+  if (galleryGrid && lightbox) {
+    var lbImg = document.getElementById("lbImg");
+    var items = Array.prototype.slice.call(galleryGrid.querySelectorAll(".gallery-item img"));
+    var current = 0;
+
+    function show(i) {
+      current = (i + items.length) % items.length;
+      lbImg.src = items[current].src;
+      lbImg.alt = items[current].alt || "";
+    }
+    function openLb(i) {
+      show(i);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLb() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    galleryGrid.addEventListener("click", function (e) {
+      var btn = e.target.closest ? e.target.closest(".gallery-item") : null;
+      if (!btn) return;
+      var imgs = galleryGrid.querySelectorAll(".gallery-item");
+      openLb(Array.prototype.indexOf.call(imgs, btn));
+    });
+
+    document.getElementById("lbClose").addEventListener("click", closeLb);
+    document.getElementById("lbPrev").addEventListener("click", function () { show(current - 1); });
+    document.getElementById("lbNext").addEventListener("click", function () { show(current + 1); });
+    lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLb(); });
+    document.addEventListener("keydown", function (e) {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLb();
+      else if (e.key === "ArrowLeft") show(current - 1);
+      else if (e.key === "ArrowRight") show(current + 1);
+    });
+  }
+
   /* ---- Footer yıl ---- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

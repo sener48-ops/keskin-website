@@ -1,0 +1,24 @@
+{
+  "name": "gun1",
+  "version": "1.0.0",
+  "description": "Mühendislik, makine üretimi ve doğal zeytin ürünleri firması için **sunucusuz (statik)** kurumsal tanıtım web sitesi. Saf HTML, CSS ve JavaScript ile yazılmıştır; herhangi bir derleme aracı veya backend gerektirmez.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sener48-ops/keskin-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sener48-ops/keskin-website/issues"
+  },
+  "homepage": "https://github.com/sener48-ops/keskin-website#readme",
+  "dependencies": {
+    "sharp": "^0.35.2"
+  }
+}
