@@ -81,6 +81,37 @@
     reveals.forEach(function (el) { el.classList.add("visible"); });
   }
 
+  /* ---- WhatsApp randevu formu ---- */
+  var WHATSAPP_NUMBER = "905333464799"; // DEĞİŞTİR: WhatsApp numarası (ülke kodu + numara, başında + yok)
+  var bookingForm = document.getElementById("bookingForm");
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = bookingForm;
+      var ad = (f.ad.value || "").trim();
+      var tel = (f.telefon.value || "").trim();
+      if (!ad || !tel) {
+        // Tarayıcı doğrulamasını tetikle
+        if (typeof f.reportValidity === "function") f.reportValidity();
+        return;
+      }
+      var lines = [
+        "Merhaba, ücretsiz danışma randevusu talep ediyorum.",
+        "",
+        "Ad Soyad: " + ad,
+        "Telefon: " + tel,
+        "Konu: " + f.konu.value
+      ];
+      if (f.tarih.value) lines.push("Tercih edilen tarih: " + f.tarih.value);
+      if (f.saat.value)  lines.push("Tercih edilen saat: " + f.saat.value);
+      var mesaj = (f.mesaj.value || "").trim();
+      if (mesaj) lines.push("Mesaj: " + mesaj);
+
+      var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+      window.open(url, "_blank", "noopener");
+    });
+  }
+
   /* ---- Footer yıl ---- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
