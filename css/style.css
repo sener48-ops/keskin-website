@@ -143,6 +143,33 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .hero-lead { font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--text-dim); max-width: 620px; margin-bottom: 34px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
+/* ===================== WHATSAPP DANIŞMA BANDI ===================== */
+.wa-band {
+  margin-top: 72px; /* sabit header'ın altına gelsin */
+  background: linear-gradient(135deg, #0c3b2e 0%, #14543e 100%);
+  border-bottom: 1px solid var(--border);
+}
+.wa-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+}
+.wa-band-text h2 { font-size: clamp(1.1rem, 2vw, 1.35rem); margin-bottom: 4px; color: #fff; }
+.wa-band-text p { color: #cfe6da; font-size: 0.97rem; max-width: 660px; }
+.wa-band-btn {
+  background: #25D366;
+  color: #06331f;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 0 10px 24px rgba(37,211,102,0.3);
+}
+.wa-band-btn:hover { background: #1fbe5b; }
+/* Hero artık ilk blok değil; header boşluğunu banttan alıyoruz */
+.hero { padding-top: 0; }
+
 .btn {
   display: inline-block;
   padding: 14px 30px;
@@ -604,6 +631,8 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   .section { padding: 68px 0; }
   .form-row.two, .form-row.three { grid-template-columns: 1fr; }
   .booking-form { padding: 22px; }
+  .wa-band-inner { flex-direction: column; align-items: flex-start; }
+  .wa-band-btn { width: 100%; text-align: center; }
 }
 
 @media (max-width: 480px) {
