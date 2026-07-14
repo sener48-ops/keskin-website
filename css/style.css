@@ -364,27 +364,33 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 }
 /* İki fotoğrafın alt alta gösterildiği, birine açıklamalı varyant */
 .split-visual.photo-duo {
-  grid-template-rows: 1fr 1fr;
-  gap: 12px;
-  padding: 12px;
-  place-items: stretch;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  padding: 0;
+  place-items: center;
+  min-height: 0;
+  max-width: 40%;
+  margin: 0 auto;
+  align-self: center;
+  background: none;
+  border: none;
 }
 .split-visual.photo-duo::before,
 .split-visual.photo-duo::after { content: none; }
 .split-visual.photo-duo .split-photo {
   margin: 0; position: relative;
   border-radius: 10px; overflow: hidden;
-  min-height: 0;
+  min-height: 0; width: 100%;
 }
 .split-visual.photo-duo .split-photo img {
-  width: 100%; height: 100%;
+  width: 100%; height: auto;
   object-fit: cover; display: block;
 }
 .split-visual.photo-duo figcaption {
   position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 22px 16px 12px;
+  padding: 16px 10px 7px;
   background: linear-gradient(0deg, rgba(8,17,29,0.92) 0%, rgba(8,17,29,0) 100%);
-  font-size: 0.92rem; font-weight: 600;
+  font-size: 0.72rem; font-weight: 600; line-height: 1.3;
   color: rgba(255,255,255,0.95); text-align: left;
 }
 
