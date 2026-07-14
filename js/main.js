@@ -90,6 +90,7 @@
       var f = bookingForm;
       var ad = (f.ad.value || "").trim();
       var tel = (f.telefon.value || "").trim();
+      var firma = (f.firma && f.firma.value || "").trim();
       if (!ad || !tel) {
         // Tarayıcı doğrulamasını tetikle
         if (typeof f.reportValidity === "function") f.reportValidity();
@@ -98,10 +99,11 @@
       var lines = [
         "Merhaba, ücretsiz danışma randevusu talep ediyorum.",
         "",
-        "Ad Soyad: " + ad,
-        "Telefon: " + tel,
-        "Konu: " + f.konu.value
+        "Ad Soyad: " + ad
       ];
+      if (firma) lines.push("Firma: " + firma);
+      lines.push("Telefon: " + tel);
+      lines.push("Konu: " + f.konu.value);
       if (f.tarih.value) lines.push("Tercih edilen tarih: " + f.tarih.value);
       if (f.saat.value)  lines.push("Tercih edilen saat: " + f.saat.value);
       var mesaj = (f.mesaj.value || "").trim();

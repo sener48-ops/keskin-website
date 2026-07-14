@@ -602,6 +602,19 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .footer-links ul { list-style: none; display: grid; gap: 10px; }
 .footer-links a, .footer-links li { color: var(--text-dim); transition: color .2s; }
 .footer-links a:hover { color: var(--accent); }
+.footer-social { margin-top: 22px; }
+.footer-social h4 { margin-bottom: 12px; font-size: 1.05rem; }
+.social-links { display: flex; gap: 12px; }
+.social-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-dim); transition: color .2s, background .2s, border-color .2s, transform .2s;
+}
+.social-link:hover {
+  color: #fff; background: var(--accent); border-color: var(--accent);
+  transform: translateY(-2px);
+}
 .footer-bottom { border-top: 1px solid var(--border); padding: 22px 0; }
 .footer-bottom p { color: var(--steel); font-size: 0.9rem; text-align: center; }
 
