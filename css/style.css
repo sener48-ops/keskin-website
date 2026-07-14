@@ -615,6 +615,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   color: #fff; background: var(--accent); border-color: var(--accent);
   transform: translateY(-2px);
 }
+.social-text { font-weight: 800; font-size: 1.05rem; line-height: 1; }
 .footer-bottom { border-top: 1px solid var(--border); padding: 22px 0; }
 .footer-bottom p { color: var(--steel); font-size: 0.9rem; text-align: center; }
 
