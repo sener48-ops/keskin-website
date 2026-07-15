@@ -115,11 +115,10 @@
   }
 
   /* ---- Galeri lightbox ---- */
-  var galleryGrid = document.getElementById("galleryGrid");
   var lightbox = document.getElementById("lightbox");
-  if (galleryGrid && lightbox) {
+  if (lightbox) {
     var lbImg = document.getElementById("lbImg");
-    var items = Array.prototype.slice.call(galleryGrid.querySelectorAll(".gallery-item img"));
+    var items = [];   // {src, alt} listesi (aktif set)
     var current = 0;
 
     function show(i) {
@@ -127,8 +126,9 @@
       lbImg.src = items[current].src;
       lbImg.alt = items[current].alt || "";
     }
-    function openLb(i) {
-      show(i);
+    function openLb(list, i) {
+      items = list;
+      show(i || 0);
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -139,11 +139,27 @@
       document.body.style.overflow = "";
     }
 
-    galleryGrid.addEventListener("click", function (e) {
-      var btn = e.target.closest ? e.target.closest(".gallery-item") : null;
-      if (!btn) return;
-      var imgs = galleryGrid.querySelectorAll(".gallery-item");
-      openLb(Array.prototype.indexOf.call(imgs, btn));
+    // Galeri ızgarası
+    var galleryGrid = document.getElementById("galleryGrid");
+    if (galleryGrid) {
+      galleryGrid.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest(".gallery-item") : null;
+        if (!btn) return;
+        var imgs = galleryGrid.querySelectorAll(".gallery-item img");
+        var list = Array.prototype.map.call(imgs, function (im) { return { src: im.src, alt: im.alt }; });
+        openLb(list, Array.prototype.indexOf.call(galleryGrid.querySelectorAll(".gallery-item"), btn));
+      });
+    }
+
+    // Butonla açılan görsel setleri (data-lightbox-images)
+    Array.prototype.forEach.call(document.querySelectorAll("[data-lightbox-images]"), function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var srcs = btn.getAttribute("data-lightbox-images").split(",");
+        var alts = (btn.getAttribute("data-lightbox-alts") || "").split("|");
+        var list = srcs.map(function (s, i) { return { src: s.trim(), alt: (alts[i] || "").trim() }; });
+        openLb(list, 0);
+      });
     });
 
     document.getElementById("lbClose").addEventListener("click", closeLb);
