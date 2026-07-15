@@ -155,9 +155,11 @@
     Array.prototype.forEach.call(document.querySelectorAll("[data-lightbox-images]"), function (btn) {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        var srcs = btn.getAttribute("data-lightbox-images").split(",");
+        var srcs = (btn.getAttribute("data-lightbox-images") || "")
+          .split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+        if (!srcs.length) { alert("Görseller yakında eklenecektir."); return; }
         var alts = (btn.getAttribute("data-lightbox-alts") || "").split("|");
-        var list = srcs.map(function (s, i) { return { src: s.trim(), alt: (alts[i] || "").trim() }; });
+        var list = srcs.map(function (s, i) { return { src: s, alt: (alts[i] || "").trim() }; });
         openLb(list, 0);
       });
     });
