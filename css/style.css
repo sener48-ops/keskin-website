@@ -212,7 +212,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   margin-bottom: 14px;
 }
 .section-tag.olive-tag { color: var(--olive); }
-.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); margin-bottom: 16px; }
+.section-head h2 { font-size: clamp(1.5rem, 2.9vw, 2.2rem); margin-bottom: 16px; }
 .section-intro { color: var(--text-dim); font-size: 1.05rem; }
 
 /* ===================== KART GRID ===================== */
@@ -287,6 +287,47 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
 .product-img.olive1 { background: linear-gradient(135deg, #5c7a2c, #34471a); }
 .product-img.olive2 { background: linear-gradient(135deg, #6b7a3e, #2f3b1c); }
 .product-img.olive3 { background: linear-gradient(135deg, #7a8a4e, #3b4326); }
+/* Ölüdeniz kumburnu + ürün kolajı */
+.product-img.collage {
+  height: 340px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 92px;
+  gap: 10px;
+  place-items: stretch;
+  background: linear-gradient(135deg, #17324a, #0e1f16);
+}
+.product-img.collage::before,
+.product-img.collage::after { display: none; }
+.collage-hero {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 42%;
+  border-radius: 10px;
+}
+.collage-strip {
+  display: flex; flex-direction: column; gap: 9px;
+  min-height: 0;
+}
+.collage-strip figure {
+  position: relative;
+  flex: 1 1 0; min-height: 0;
+  margin: 0; border-radius: 9px; overflow: hidden;
+  border: 2.5px solid #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+  transition: transform .2s;
+}
+.collage-strip figure:hover { transform: scale(1.05); }
+.collage-strip img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.collage-strip figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 10px 4px 4px;
+  font-size: 0.66rem; font-weight: 700;
+  text-align: center; color: #fff;
+  background: linear-gradient(0deg, rgba(8,17,29,0.85), transparent);
+}
 /* Gerçek fotoğraf: kutuyu kaplar, etiketin üzerini örter */
 .product-photo {
   position: absolute;
@@ -318,6 +359,22 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   color: var(--olive);
   font-weight: 700;
 }
+/* Satır sonu küçük görsel şeridi (EPS/XPS) */
+.li-thumbs {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.li-thumbs img {
+  width: 46px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  transition: transform .2s;
+}
+.li-thumbs img:hover { transform: scale(1.15); }
 
 /* ===================== SPLIT (Fason) ===================== */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
@@ -541,14 +598,14 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 30px;
-  display: grid; gap: 16px;
+  padding: 15px 30px;
+  display: grid; gap: 9px;
 }
-.form-row { display: grid; gap: 16px; }
+.form-row { display: grid; gap: 9px; }
 .form-row.two { grid-template-columns: 1fr 1fr; }
 .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
 .booking-form label {
-  display: flex; flex-direction: column; gap: 7px;
+  display: flex; flex-direction: column; gap: 4px;
   font-size: 0.9rem; font-weight: 600; color: var(--text-dim);
 }
 .booking-form .req { color: var(--accent); }
@@ -559,7 +616,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   background: var(--bg-darker);
   border: 1px solid var(--border);
   border-radius: 9px;
-  padding: 12px 14px;
+  padding: 7px 14px;
   color: var(--text);
   font-family: inherit;
   font-size: 0.97rem;
@@ -598,7 +655,7 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(255,122,24,0.16);
 }
-.booking-form textarea { resize: vertical; min-height: 80px; }
+.booking-form textarea { resize: vertical; min-height: 46px; }
 .booking-btn { justify-self: start; border: none; }
 .wa-ico { font-size: 0.9em; }
 .booking-note { font-size: 0.84rem; color: var(--steel); margin: 0; }
